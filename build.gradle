@@ -1,34 +1,28 @@
-plugins {
-    id 'java'
-    id 'io.quarkus'
+allprojects {
+    group 'com.example'
+    version '1.0-SNAPSHOT'
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
+subprojects {
+    apply plugin: 'java'
 
-dependencies {
-    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-arc'
-    implementation 'io.quarkus:quarkus-resteasy'
-    testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
-}
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
 
-group 'com.example'
-version '1.0-SNAPSHOT'
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
+    compileJava {
+        options.encoding = 'UTF-8'
+        options.compilerArgs << '-parameters'
+    }
 
-compileJava {
-    options.encoding = 'UTF-8'
-    options.compilerArgs << '-parameters'
-}
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
 
-compileTestJava {
-    options.encoding = 'UTF-8'
 }

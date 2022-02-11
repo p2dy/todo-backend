@@ -9,3 +9,5 @@ pluginManagement {
     }
 }
 rootProject.name = 'todo-backend'
+include 'board'
+
