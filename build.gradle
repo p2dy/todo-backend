@@ -1,5 +1,5 @@
 allprojects {
-    group 'com.example'
+    group 'com.com.example'
     version '1.0-SNAPSHOT'
 }
 
