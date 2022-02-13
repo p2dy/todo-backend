@@ -1,13 +1,5 @@
 plugins {
-    id 'java'
     id 'io.quarkus'
+    id 'todo-backend.conventions'
     id 'org.kordamp.gradle.jandex' version '0.11.0'
-}
-
-dependencies {
-    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-arc'
-    implementation 'io.quarkus:quarkus-resteasy'
-    testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
 }

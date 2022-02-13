@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library'
+    id 'java-test-fixtures'
+    id 'java'
+
+    id 'todo-backend.quarkus'
+    id 'todo-backend.java-conventions'
+    id 'todo-backend.lombok'
+}
