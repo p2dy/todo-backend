@@ -4,5 +4,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(':board'))
+    implementation('io.quarkus:quarkus-smallrye-health:0.14.0')
+
+    api(project(':board'))
 }
