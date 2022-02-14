@@ -13,10 +13,13 @@ public class MonitoringHealthCheck implements HealthCheck {
     @ConfigProperty(name = "quarkus.application.version")
     String version;
 
+    @ConfigProperty(name = "quarkus.application.name")
+    String applicationName;
+
     @Override
     public HealthCheckResponse call() {
         return HealthCheckResponse
-                .named("todo-backend")
+                .named(applicationName)
                 .withData("version", version)
                 .up().build();
     }

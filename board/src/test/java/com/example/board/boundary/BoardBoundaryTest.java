@@ -1,6 +1,5 @@
-package com.example;
+package com.example.board.boundary;
 
-import com.example.board.domain.Board;
 import com.example.board.domain.CreateBoardService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,17 +7,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.UUID;
-
+import static com.example.board.boundary.BoardDtoFixture.*;
+import static com.example.board.domain.BoardFixture.BOARD_TO_CREATE;
+import static com.example.board.domain.BoardFixture.CREATED_BOARD;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
 class BoardBoundaryTest {
-
-    public static final UUID BOARD_ID_VALUE = java.util.UUID.randomUUID();
-    public static final Board BOARD = Board.create(BOARD_ID_VALUE);
-    private static final Board CREATED_BOARD = Board.create(UUID.randomUUID());
 
     @InjectMocks
     BoardBoundary underTest;
@@ -27,11 +23,12 @@ class BoardBoundaryTest {
     private CreateBoardService createService;
 
     @Test
-    void getOrCreate() {
-        given(createService.create(BOARD)).willReturn(CREATED_BOARD);
+    void create() {
+        given(createService.create(BOARD_TO_CREATE)).willReturn(CREATED_BOARD);
 
-        var board = underTest.create(BOARD);
+        var board = underTest.create(givenBoardToCreate());
 
-        then(board).isEqualTo(CREATED_BOARD);
+        then(board).usingRecursiveComparison().isEqualTo(givenCreatedBoard());
     }
+
 }

@@ -16,7 +16,7 @@ public class MonitoringHealthCheckIT {
                 .get("/q/health/live")
                 .then()
                 .statusCode(200)
-                .and().body(containsString("todo-backend"))
+                .and().body(containsString("name-test"))
                 .and().body(containsString("major-test.minor-test.patch-test"));
     }
 
