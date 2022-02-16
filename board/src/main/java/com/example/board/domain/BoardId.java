@@ -10,7 +10,13 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class BoardId {
 
+    private static final UUID DEFAULT_ID_VALUE = UUID.fromString("0-0-0-0-0");
+
     UUID value;
+
+    public static BoardId defaultId() {
+        return of(DEFAULT_ID_VALUE);
+    }
 
     public static BoardId of(UUID value) {
         return new BoardId(value);

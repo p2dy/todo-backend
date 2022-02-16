@@ -4,22 +4,16 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.UUID;
-
 @Value
 @ToString
 @EqualsAndHashCode
 public class Board {
 
-    UUID uniqueId;
     BoardId id;
+    Title title;
 
-    public static Board createEmpty() {
-        return create(UUID.fromString("0-0-0-0-0"));
-    }
-
-    public static Board create(UUID uniqueId) {
-        return new Board(uniqueId, BoardId.of(uniqueId));
+    public static Board create(BoardId boardId, Title title) {
+        return new Board(boardId, title);
     }
 
     public BoardId getId() {
@@ -27,7 +21,7 @@ public class Board {
     }
 
     public Board with(BoardId id) {
-        return Board.create(id.getValue());
+        return Board.create(BoardId.of(id.getValue()), this.getTitle());
     }
 }
 

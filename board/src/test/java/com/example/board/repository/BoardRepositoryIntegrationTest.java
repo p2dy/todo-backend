@@ -7,7 +7,7 @@ import static com.example.board.domain.BoardFixture.BOARD;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenExceptionOfType;
 
-class BoardRepositoryTest {
+class BoardRepositoryIntegrationTest {
 
     private BoardRepository underTest;
 
