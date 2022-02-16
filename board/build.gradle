@@ -4,6 +4,3 @@ plugins {
     id 'org.kordamp.gradle.jandex' version '0.11.0'
 }
 
-dependencies {
-    testImplementation('org.mockito:mockito-junit-jupiter:4.3.1')
-}

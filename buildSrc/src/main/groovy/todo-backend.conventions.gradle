@@ -4,6 +4,6 @@ plugins {
     id 'java'
 
     id 'todo-backend.quarkus'
-    id 'todo-backend.java-conventions'
+    id 'todo-backend.unit-test'
     id 'todo-backend.lombok'
 }
