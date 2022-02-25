@@ -1,5 +1,6 @@
 package com.example.board.domain;
 
+import com.example.core.domain.CreateRepository;
 import lombok.AllArgsConstructor;
 
 import javax.enterprise.context.ApplicationScoped;

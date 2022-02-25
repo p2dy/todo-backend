@@ -1,6 +1,6 @@
 package com.example.board.domain;
 
-import com.example.board.repository.BoardRepository;
+import com.example.core.domain.CreateRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static com.example.board.domain.BoardFixture.*;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class CreateBoardServiceTest {

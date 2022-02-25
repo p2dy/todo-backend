@@ -12,7 +12,7 @@ import static com.example.board.domain.BoardId.defaultId;
 
 @Data
 public class BoardDto {
-    @Setter(value = AccessLevel.PRIVATE)
+    @Setter(value = AccessLevel.PACKAGE)
     private UUID uniqueId;
 
     private String title;

@@ -11,4 +11,6 @@ pluginManagement {
 rootProject.name = 'todo-backend'
 include 'application'
 include 'board'
+include 'core'
+include 'progress-column'
 

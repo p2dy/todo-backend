@@ -5,7 +5,5 @@ plugins {
 }
 
 dependencies {
-    implementation 'io.quarkus:quarkus-smallrye-graphql:2.7.0.Final'
-
     implementation(project(':core'))
 }

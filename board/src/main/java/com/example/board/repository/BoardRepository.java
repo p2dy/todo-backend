@@ -1,7 +1,7 @@
 package com.example.board.repository;
 
 import com.example.board.domain.Board;
-import com.example.board.domain.CreateRepository;
+import com.example.core.domain.CreateRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.HashMap;
