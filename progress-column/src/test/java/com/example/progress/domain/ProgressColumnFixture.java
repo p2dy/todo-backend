@@ -5,11 +5,10 @@ import com.example.board.domain.BoardId;
 import com.example.board.events.CreatedBoardEvent;
 import com.example.core.domain.Title;
 
+import java.util.List;
 import java.util.UUID;
 
-import static com.example.progress.domain.ProgressColumn.done;
-import static com.example.progress.domain.ProgressColumn.todo;
-import static com.example.progress.domain.ProgressColumns.defaultColumns;
+import static com.example.progress.domain.ProgressColumns.create;
 
 public class ProgressColumnFixture {
     private static final Title SUPER_TEAM_BOARD_TITLE = Title.of("Super Team Board");
@@ -20,7 +19,12 @@ public class ProgressColumnFixture {
 
     public static final Board CREATED_BOARD = Board.create(BoardId.of(CREATED_BOARD_ID_VALUE), BOARD_TO_CREATE.getTitle());
     public static final CreatedBoardEvent EVENT_OF_CREATED_BOARD = CreatedBoardEvent.of(CREATED_BOARD);
-    public static final ProgressColumn TODO_COLUMN = ProgressColumn.todo(ColumnId.defaultId());
-    public static final ProgressColumn DONE_COLUMN = ProgressColumn.done(ColumnId.defaultId());
-    public static final ProgressColumns DEFAULT_PROGRESS_COLUMNS = defaultColumns(CREATED_BOARD.getId(), TODO_COLUMN, DONE_COLUMN);
+
+
+
+    public static final ColumnId TODO_COLUMN_ID = ColumnId.of(UUID.fromString("d72a66fc-95b7-4567-9ec0-a7a2696fd6ab"));
+    public static final ColumnId DONE_COLUMN_ID = ColumnId.of(UUID.fromString("8221edb6-14b8-410c-b175-d89eeae52c68"));
+    public static final ProgressColumn TODO_COLUMN = ProgressColumn.todo(TODO_COLUMN_ID);
+    public static final ProgressColumn DONE_COLUMN = ProgressColumn.done(DONE_COLUMN_ID);
+    public static final ProgressColumns DEFAULT_PROGRESS_COLUMNS = create(CREATED_BOARD.getId(), List.of(TODO_COLUMN, DONE_COLUMN));
 }

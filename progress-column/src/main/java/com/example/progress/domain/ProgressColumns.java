@@ -11,8 +11,8 @@ public class ProgressColumns {
     BoardId boardId;
     List<ProgressColumn> values;
 
-    public static ProgressColumns defaultColumns(BoardId boardId, ProgressColumn todoColumn, ProgressColumn doneColumn) {
-        return new ProgressColumns(boardId, List.of(todoColumn, doneColumn));
+    public static ProgressColumns create(BoardId boardId, List<ProgressColumn> values) {
+        return new ProgressColumns(boardId, values);
     }
 
 }

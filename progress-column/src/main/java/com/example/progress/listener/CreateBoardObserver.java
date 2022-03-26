@@ -1,6 +1,7 @@
 package com.example.progress.listener;
 
 import com.example.board.events.CreatedBoardEvent;
+import com.example.core.domain.UniqueIdProvider;
 import com.example.progress.domain.ColumnId;
 import com.example.progress.domain.CreateProgressColumnService;
 import lombok.AllArgsConstructor;
@@ -10,9 +11,11 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import java.util.List;
+
 import static com.example.progress.domain.ProgressColumn.done;
 import static com.example.progress.domain.ProgressColumn.todo;
-import static com.example.progress.domain.ProgressColumns.defaultColumns;
+import static com.example.progress.domain.ProgressColumns.create;
 
 @ApplicationScoped
 @AllArgsConstructor(onConstructor_ = @Inject)
@@ -20,9 +23,13 @@ import static com.example.progress.domain.ProgressColumns.defaultColumns;
 public class CreateBoardObserver {
 
     private final CreateProgressColumnService service;
+    private final UniqueIdProvider uniqueIdProvider;
 
     public void on(@Observes CreatedBoardEvent board) {
-        service.create(defaultColumns(board.getId(), todo(ColumnId.defaultId()), done(ColumnId.defaultId())));
+        var todoColumn = todo(ColumnId.of(uniqueIdProvider.generate()));
+        var doneColumn = done(ColumnId.of(uniqueIdProvider.generate()));
+        var columnsToCreate = create(board.getId(), List.of(todoColumn, doneColumn));
+        service.create(columnsToCreate);
     }
 
 }
