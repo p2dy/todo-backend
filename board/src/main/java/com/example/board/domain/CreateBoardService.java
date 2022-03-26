@@ -17,13 +17,10 @@ import static com.example.board.events.CreatedBoardEvent.of;
 public class CreateBoardService {
 
     private final CreateRepository<Board> repository;
-    private final BoardIdProvider idProvider;
     private final Event<CreatedBoardEvent> event;
 
     public Board create(Board boardToCreate) {
-        var boardId = idProvider.generate();
-        var board = boardToCreate.with(boardId);
-        var createdBoard = repository.create(board);
+        var createdBoard = repository.create(boardToCreate);
         event.fire(of(createdBoard));
         return createdBoard;
     }

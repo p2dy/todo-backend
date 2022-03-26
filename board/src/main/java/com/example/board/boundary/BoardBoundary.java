@@ -17,8 +17,7 @@ public final class BoardBoundary {
 
     @Mutation
     public BoardDto createBoard(BoardDto board) {
-        var model = createService.create(board.model());
-        return BoardDto.of(model);
+        return BoardDto.of(createService.create(board.model()));
     }
 
     @Query

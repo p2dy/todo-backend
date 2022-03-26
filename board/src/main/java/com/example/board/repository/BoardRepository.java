@@ -2,10 +2,10 @@ package com.example.board.repository;
 
 import com.example.board.domain.Board;
 import com.example.core.domain.CreateRepository;
+import org.dataloader.annotations.VisibleForTesting;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 @ApplicationScoped
 public class BoardRepository implements CreateRepository<Board> {
@@ -13,10 +13,12 @@ public class BoardRepository implements CreateRepository<Board> {
 
     public Board create(Board board) {
         var uuid = board.getId().getValue();
-        if(dao.get(uuid) != null) {
-            throw new IllegalStateException("board with id %s already exists".formatted(uuid));
-        }
-        dao.put(uuid, board);
+        if(!dao.containsKey(uuid)) dao.put(uuid, board);
         return dao.get(uuid);
+    }
+
+    @VisibleForTesting
+    Collection<Board> getValues() {
+        return dao.values();
     }
 }

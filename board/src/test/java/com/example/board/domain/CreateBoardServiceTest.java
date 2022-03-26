@@ -25,15 +25,11 @@ class CreateBoardServiceTest {
     private CreateRepository<Board> repository;
 
     @Mock
-    private BoardIdProvider boardIdProvider;
-
-    @Mock
     private Event<CreatedBoardEvent> boardCreateEvent;
 
     @Test
     void create() {
-        given(boardIdProvider.generate()).willReturn(BOARD.getId());
-        given(repository.create(BOARD)).willReturn(CREATED_BOARD);
+        given(repository.create(BOARD_TO_CREATE)).willReturn(CREATED_BOARD);
 
         var board = underTest.create(BOARD_TO_CREATE);
 

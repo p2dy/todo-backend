@@ -17,8 +17,5 @@ public class Board {
         return new Board(boardId, title);
     }
 
-    public Board with(BoardId id) {
-        return Board.create(BoardId.of(id.getValue()), this.getTitle());
-    }
 }
 
