@@ -1,6 +1,6 @@
 package com.example.board.domain;
 
-import com.example.board.events.BoardCreateEvent;
+import com.example.board.events.CreatedBoardEvent;
 import com.example.core.domain.CreateRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +28,7 @@ class CreateBoardServiceTest {
     private BoardIdProvider boardIdProvider;
 
     @Mock
-    private Event<BoardCreateEvent> boardCreateEvent;
+    private Event<CreatedBoardEvent> boardCreateEvent;
 
     @Test
     void create() {

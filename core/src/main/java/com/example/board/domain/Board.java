@@ -1,5 +1,6 @@
 package com.example.board.domain;
 
+import com.example.core.domain.Title;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -14,10 +15,6 @@ public class Board {
 
     public static Board create(BoardId boardId, Title title) {
         return new Board(boardId, title);
-    }
-
-    public BoardId getId() {
-        return id;
     }
 
     public Board with(BoardId id) {

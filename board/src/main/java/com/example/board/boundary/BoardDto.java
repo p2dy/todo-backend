@@ -1,7 +1,7 @@
 package com.example.board.boundary;
 
 import com.example.board.domain.Board;
-import com.example.board.domain.Title;
+import com.example.core.domain.Title;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -14,7 +14,6 @@ import static com.example.board.domain.BoardId.defaultId;
 public class BoardDto {
     @Setter(value = AccessLevel.PACKAGE)
     private UUID uniqueId;
-
     private String title;
 
     public static BoardDto of(Board model) {
