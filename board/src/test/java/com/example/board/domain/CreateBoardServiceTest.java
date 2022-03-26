@@ -1,11 +1,14 @@
 package com.example.board.domain;
 
+import com.example.board.events.BoardCreateEvent;
 import com.example.core.domain.CreateRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import javax.enterprise.event.Event;
 
 import static com.example.board.domain.BoardFixture.*;
 import static org.assertj.core.api.BDDAssertions.then;
@@ -24,6 +27,9 @@ class CreateBoardServiceTest {
     @Mock
     private BoardIdProvider boardIdProvider;
 
+    @Mock
+    private Event<BoardCreateEvent> boardCreateEvent;
+
     @Test
     void create() {
         given(boardIdProvider.generate()).willReturn(BOARD.getId());
@@ -32,5 +38,6 @@ class CreateBoardServiceTest {
         var board = underTest.create(BOARD_TO_CREATE);
 
         then(board).isEqualTo(CREATED_BOARD);
+        verify(boardCreateEvent).fire(EVENT_OF_CREATED_BOARD);
     }
 }

@@ -1,4 +1,5 @@
 plugins {
     id 'io.quarkus'
     id 'todo-backend.conventions'
+    id 'org.kordamp.gradle.jandex' version '0.11.0'
 }

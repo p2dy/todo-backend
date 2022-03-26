@@ -7,4 +7,5 @@ dependencies {
     implementation('io.quarkus:quarkus-smallrye-health:2.7.0.Final')
 
     api(project(':board'))
+    api(project(':progress-column'))
 }
