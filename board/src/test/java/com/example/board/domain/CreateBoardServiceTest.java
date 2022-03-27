@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.enterprise.event.Event;
-
 import java.util.Optional;
 
 import static com.example.board.domain.BoardFixture.*;

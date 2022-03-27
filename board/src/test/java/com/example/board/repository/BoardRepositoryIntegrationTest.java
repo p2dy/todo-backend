@@ -6,7 +6,6 @@ import com.example.core.domain.Title;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import static com.example.board.domain.BoardFixture.BOARD_TO_CREATE;
