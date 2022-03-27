@@ -8,7 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.example.progress.domain.ProgressColumnFixture.*;
+import static com.example.progress.domain.ProgressFixture.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
@@ -26,10 +26,10 @@ class CreateBoardObserverTest {
 
     @Test
     void onBoardCreate_delegatesToService() {
-        given(progressIdProvider.generate()).willReturn(TODO_COLUMN_ID, DONE_COLUMN_ID);
+        given(progressIdProvider.generate()).willReturn(TODO_ID, DONE_ID);
 
         observer.on(EVENT_OF_CREATED_BOARD);
 
-        verify(service).create(DEFAULT_PROGRESS_COLUMNS);
+        verify(service).create(DEFAULT_PROGRESSES);
     }
 }

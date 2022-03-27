@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.example.progress.domain.ProgressColumnFixture.PROGRESS_COLUMNS_TO_CREATE;
+import static com.example.progress.domain.ProgressFixture.PROGRESSES_TO_CREATE;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,8 +21,8 @@ class CreateProgressServiceTest {
 
     @Test
     void create() {
-        underTest.create(PROGRESS_COLUMNS_TO_CREATE);
+        underTest.create(PROGRESSES_TO_CREATE);
 
-        verify(repository).create(PROGRESS_COLUMNS_TO_CREATE);
+        verify(repository).create(PROGRESSES_TO_CREATE);
     }
 }
