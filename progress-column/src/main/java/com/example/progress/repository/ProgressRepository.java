@@ -1,11 +1,13 @@
 package com.example.progress.repository;
 
+import com.example.board.domain.BoardId;
 import com.example.core.domain.CreateRepository;
 import com.example.progress.domain.Progresses;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -22,5 +24,10 @@ public class ProgressRepository implements CreateRepository<Progresses> {
     @Override
     public Collection<Progresses> getValues() {
         return dao.values();
+    }
+
+    @Override
+    public Optional<Progresses> read(BoardId id) {
+        return Optional.empty();
     }
 }

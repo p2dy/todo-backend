@@ -6,10 +6,12 @@ import com.example.core.domain.Title;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.example.board.domain.BoardFixture.BOARD_TO_CREATE;
 import static org.assertj.core.api.BDDAssertions.then;
+import static org.assertj.core.api.BDDAssertions.thenExceptionOfType;
 
 class BoardRepositoryIntegrationTest {
 
@@ -22,24 +24,30 @@ class BoardRepositoryIntegrationTest {
 
     @Test
     void create() {
+        underTest.create(BOARD_TO_CREATE);
+        var board2 = underTest.create(Board.create(BoardId.of(UUID.randomUUID()), Title.of("AnotherBoard")));
+
+        then(underTest.getValues()).containsExactly(BOARD_TO_CREATE, board2);
+    }
+
+    @Test
+    void create_Throws_ForDuplicate() {
+        underTest.create(BOARD_TO_CREATE);
+
+        thenExceptionOfType(IllegalStateException.class)
+                .isThrownBy(() -> underTest.create(BOARD_TO_CREATE))
+                .withMessageContaining("board with id %s already exists".formatted(BOARD_TO_CREATE.getId().getValue()));
+    }
+
+    @Test
+    void read_IsEmpty() {
+        then(underTest.read(BOARD_TO_CREATE.getId())).isEmpty();
+    }
+
+    @Test
+    void read() {
         var board = underTest.create(BOARD_TO_CREATE);
 
-        then(board).isEqualTo(BOARD_TO_CREATE);
-    }
-
-    @Test
-    void createMultiple() {
-        var board1 = underTest.create(BOARD_TO_CREATE);
-        var board2 = underTest.create(Board.create(BoardId.of(UUID.randomUUID()), Title.of("Foo")));
-
-        then(underTest.getValues()).containsExactly(board1, board2);
-    }
-
-    @Test
-    void createIsIdempotent() {
-        underTest.create(BOARD_TO_CREATE);
-        underTest.create(BOARD_TO_CREATE);
-
-        then(underTest.getValues()).containsExactly(BOARD_TO_CREATE);
+        then(underTest.read(BOARD_TO_CREATE.getId())).isPresent().contains(board);
     }
 }

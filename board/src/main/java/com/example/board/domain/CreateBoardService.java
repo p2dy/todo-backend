@@ -20,8 +20,11 @@ public class CreateBoardService {
     private final Event<CreatedBoardEvent> event;
 
     public Board create(Board boardToCreate) {
-        var createdBoard = repository.create(boardToCreate);
-        event.fire(of(createdBoard));
-        return createdBoard;
+        return repository.read(boardToCreate.getId()).orElseGet(() -> {
+            var createdBoard = repository.create(boardToCreate);
+            event.fire(of(createdBoard));
+            return createdBoard;
+        });
     }
+
 }
