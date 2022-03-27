@@ -1,7 +1,7 @@
 package com.example.progress.listener;
 
-import com.example.core.domain.UniqueIdProvider;
-import com.example.progress.domain.CreateProgressColumnService;
+import com.example.progress.domain.ProgressIdProvider;
+import com.example.progress.domain.CreateProgressService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,14 +19,14 @@ class CreateBoardObserverTest {
     CreateBoardObserver observer;
 
     @Mock
-    private CreateProgressColumnService service;
+    private CreateProgressService service;
 
     @Mock
-    private UniqueIdProvider uniqueIdProvider;
+    private ProgressIdProvider progressIdProvider;
 
     @Test
     void onBoardCreate_delegatesToService() {
-        given(uniqueIdProvider.generate()).willReturn(TODO_COLUMN_ID.getValue(), DONE_COLUMN_ID.getValue());
+        given(progressIdProvider.generate()).willReturn(TODO_COLUMN_ID, DONE_COLUMN_ID);
 
         observer.on(EVENT_OF_CREATED_BOARD);
 

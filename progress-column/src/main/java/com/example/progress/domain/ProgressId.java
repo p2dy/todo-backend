@@ -5,9 +5,9 @@ import lombok.Value;
 import java.util.UUID;
 
 @Value
-public class ColumnId {
+public class ProgressId {
     UUID value;
-    public static ColumnId of(UUID value) {
-        return new ColumnId(value);
+    public static ProgressId of(UUID value) {
+        return new ProgressId(value);
     }
 }

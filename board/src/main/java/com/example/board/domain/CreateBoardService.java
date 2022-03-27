@@ -11,9 +11,9 @@ import javax.inject.Inject;
 
 import static com.example.board.events.CreatedBoardEvent.of;
 
+@Slf4j
 @ApplicationScoped
 @AllArgsConstructor(onConstructor_ = @Inject)
-@Slf4j
 public class CreateBoardService {
 
     private final CreateRepository<Board> repository;

@@ -2,10 +2,11 @@ package com.example.board.repository;
 
 import com.example.board.domain.Board;
 import com.example.core.domain.CreateRepository;
-import org.dataloader.annotations.VisibleForTesting;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.UUID;
 
 @ApplicationScoped
 public class BoardRepository implements CreateRepository<Board> {
@@ -17,8 +18,9 @@ public class BoardRepository implements CreateRepository<Board> {
         return dao.get(uuid);
     }
 
-    @VisibleForTesting
-    Collection<Board> getValues() {
+    @Override
+    public Collection<Board> getValues() {
         return dao.values();
     }
+
 }
