@@ -2,7 +2,8 @@ package com.example.board.repository;
 
 import com.example.board.domain.Board;
 import com.example.board.domain.BoardId;
-import com.example.core.domain.Repository;
+import com.example.core.CreateRepository;
+import com.example.core.ReadRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Collection;
@@ -11,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @ApplicationScoped
-public class BoardRepository implements Repository<Board> {
+class BoardRepository implements CreateRepository<Board>, ReadRepository<BoardId, Board> {
     private final HashMap<UUID, Board> dao = new HashMap<>();
 
     public Board create(Board board) {
@@ -28,9 +29,7 @@ public class BoardRepository implements Repository<Board> {
         return Optional.ofNullable(dao.get(boardId.getValue()));
     }
 
-    @Override
-    public Collection<Board> getValues() {
+    Collection<Board> getValues() {
         return dao.values();
     }
-
 }

@@ -1,6 +1,5 @@
 package com.example.board.domain;
 
-import com.example.board.events.CreatedBoardEvent;
 import com.example.core.domain.Title;
 
 import java.util.UUID;
@@ -12,5 +11,4 @@ public class BoardFixture {
 
     public static final Board BOARD_TO_CREATE = Board.create(BoardId.of(BOARD_TO_CREATE_ID_VALUE), SUPER_TEAM_BOARD_TITLE);
     public static final Board CREATED_BOARD = Board.create(BoardId.of(CREATED_BOARD_ID_VALUE), BOARD_TO_CREATE.getTitle());
-    public static final CreatedBoardEvent EVENT_OF_CREATED_BOARD = CreatedBoardEvent.of(CREATED_BOARD);
 }
