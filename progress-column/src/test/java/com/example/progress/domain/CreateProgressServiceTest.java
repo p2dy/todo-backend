@@ -1,6 +1,6 @@
 package com.example.progress.domain;
 
-import com.example.core.domain.CreateRepository;
+import com.example.core.domain.Repository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,7 +17,7 @@ class CreateProgressServiceTest {
     private CreateProgressService underTest;
 
     @Mock
-    private CreateRepository<Progresses> repository;
+    private Repository<Progresses> repository;
 
     @Test
     void create() {

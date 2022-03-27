@@ -1,7 +1,9 @@
 package com.example.board.domain;
 
 import com.example.board.events.CreatedBoardEvent;
-import com.example.core.domain.CreateRepository;
+import com.example.core.domain.IdempotentService;
+import com.example.core.domain.Repository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,16 +21,20 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class CreateBoardServiceTest {
+class BoardServiceTest {
 
-    @InjectMocks
-    private CreateBoardService underTest;
+    private IdempotentService<BoardId, Board> underTest;
 
     @Mock
-    private CreateRepository<Board> repository;
+    private Repository<Board> repository;
 
     @Mock
     private Event<CreatedBoardEvent> boardCreateEvent;
+
+    @BeforeEach
+    void setUp() {
+        underTest = new BoardService(repository, boardCreateEvent);
+    }
 
     @Test
     void create() {
@@ -41,10 +47,20 @@ class CreateBoardServiceTest {
     }
 
     @Test
-    void create_Idempotent() {
+    void createIdempotent() {
+        given(repository.create(BOARD_TO_CREATE)).willReturn(CREATED_BOARD);
+
+        var board = underTest.createIdempotent(BOARD_TO_CREATE);
+
+        then(board).isEqualTo(CREATED_BOARD);
+        verify(boardCreateEvent).fire(EVENT_OF_CREATED_BOARD);
+    }
+
+    @Test
+    void createIdempotent_existingModel() {
         given(repository.read(BOARD_TO_CREATE.getId())).willReturn(Optional.of(CREATED_BOARD));
 
-        var board = underTest.create(BOARD_TO_CREATE);
+        var board = underTest.createIdempotent(BOARD_TO_CREATE);
 
         then(board).isEqualTo(CREATED_BOARD);
         verify(repository, never()).create(any());

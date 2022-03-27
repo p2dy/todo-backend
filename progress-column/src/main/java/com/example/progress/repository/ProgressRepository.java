@@ -1,7 +1,7 @@
 package com.example.progress.repository;
 
 import com.example.board.domain.BoardId;
-import com.example.core.domain.CreateRepository;
+import com.example.core.domain.Repository;
 import com.example.progress.domain.Progresses;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @ApplicationScoped
-public class ProgressRepository implements CreateRepository<Progresses> {
+public class ProgressRepository implements Repository<Progresses> {
     private final HashMap<UUID, Progresses> dao = new HashMap<>();
 
     @Override

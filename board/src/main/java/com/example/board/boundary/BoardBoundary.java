@@ -1,6 +1,8 @@
 package com.example.board.boundary;
 
-import com.example.board.domain.CreateBoardService;
+import com.example.board.domain.Board;
+import com.example.board.domain.BoardId;
+import com.example.core.domain.IdempotentService;
 import lombok.AllArgsConstructor;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
@@ -13,11 +15,11 @@ import javax.inject.Inject;
 @ApplicationScoped
 @AllArgsConstructor(onConstructor_ = @Inject)
 public final class BoardBoundary {
-    private final CreateBoardService createService;
+    private final IdempotentService<BoardId, Board> service;
 
     @Mutation
     public BoardDto createBoard(BoardDto board) {
-        return BoardDto.of(createService.create(board.model()));
+        return BoardDto.of(service.createIdempotent(board.model()));
     }
 
     @Query
