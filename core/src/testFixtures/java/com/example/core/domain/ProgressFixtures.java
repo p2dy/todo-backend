@@ -1,20 +1,15 @@
-package com.example.progress.domain;
+package com.example.core.domain;
 
-import com.example.board.domain.Board;
-import com.example.board.domain.BoardId;
-import com.example.core.domain.Title;
+import com.example.progress.domain.Progress;
+import com.example.progress.domain.ProgressId;
+import com.example.progress.domain.Progresses;
 
 import java.util.List;
 import java.util.UUID;
 
-public class ProgressFixture {
-    private static final Title SUPER_TEAM_BOARD_TITLE = Title.of("Super Team Board");
-    private static final UUID CREATED_BOARD_ID_VALUE = UUID.fromString("6129aee4-a66e-43bc-8c2a-b30e4a8b0f0a");
-    private static final UUID BOARD_TO_CREATE_ID_VALUE = UUID.fromString("0-0-0-0-0");
-    private static final Board BOARD_TO_CREATE = Board.create(BoardId.of(BOARD_TO_CREATE_ID_VALUE), SUPER_TEAM_BOARD_TITLE);
+import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
 
-    public static final Board CREATED_BOARD = Board.create(BoardId.of(CREATED_BOARD_ID_VALUE), BOARD_TO_CREATE.getTitle());
-
+public class ProgressFixtures {
     public static final ProgressId TODO_ID = ProgressId.of(UUID.fromString("d72a66fc-95b7-4567-9ec0-a7a2696fd6ab"));
     public static final ProgressId DONE_ID = ProgressId.of(UUID.fromString("8221edb6-14b8-410c-b175-d89eeae52c68"));
     public static final Progress TODO = Progress.todo(TODO_ID);

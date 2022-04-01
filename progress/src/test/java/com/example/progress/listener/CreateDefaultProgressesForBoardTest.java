@@ -9,7 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.example.progress.domain.ProgressFixture.*;
+import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
+import static com.example.core.domain.ProgressFixtures.*;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;

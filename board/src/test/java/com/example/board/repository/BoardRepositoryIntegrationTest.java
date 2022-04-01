@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
-import static com.example.board.domain.BoardFixture.BOARD_TO_CREATE;
+import static com.example.core.domain.BoardFixtures.BOARD_TO_CREATE;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenExceptionOfType;
 

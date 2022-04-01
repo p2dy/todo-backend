@@ -11,8 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import javax.ws.rs.NotFoundException;
 import java.util.Optional;
 
-import static com.example.board.boundary.BoardDtoFixture.createdBoard;
-import static com.example.board.domain.BoardFixture.CREATED_BOARD;
+import static com.example.core.boundary.BoardDtoFixture.createdBoard;
+import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenExceptionOfType;
 import static org.mockito.BDDMockito.given;

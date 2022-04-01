@@ -7,10 +7,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.example.board.boundary.BoardDtoFixture.boardToCreate;
-import static com.example.board.boundary.BoardDtoFixture.createdBoard;
-import static com.example.board.domain.BoardFixture.BOARD_TO_CREATE;
-import static com.example.board.domain.BoardFixture.CREATED_BOARD;
+import static com.example.core.boundary.BoardDtoFixture.boardToCreate;
+import static com.example.core.boundary.BoardDtoFixture.createdBoard;
+import static com.example.core.domain.BoardFixtures.BOARD_TO_CREATE;
+import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 

@@ -1,10 +1,11 @@
-package com.example.board.domain;
+package com.example.core.domain;
 
-import com.example.core.domain.Title;
+import com.example.board.domain.Board;
+import com.example.board.domain.BoardId;
 
 import java.util.UUID;
 
-public class BoardFixture {
+public class BoardFixtures {
     private static final Title SUPER_TEAM_BOARD_TITLE = Title.of("Super Team Board");
     private static final UUID BOARD_TO_CREATE_ID_VALUE = UUID.fromString("24e9a45b-3ad1-4b70-b6e6-e36a1a4232bc");
     private static final UUID CREATED_BOARD_ID_VALUE = UUID.fromString("6129aee4-a66e-43bc-8c2a-b30e4a8b0f0a");

@@ -1,6 +1,8 @@
-package com.example.board.boundary;
+package com.example.core.boundary;
 
-import static com.example.board.domain.BoardFixture.*;
+import com.example.board.boundary.BoardDto;
+
+import static com.example.core.domain.BoardFixtures.*;
 
 public class BoardDtoFixture {
 

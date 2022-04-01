@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.example.progress.domain.ProgressFixture.PROGRESSES_TO_CREATE;
+import static com.example.core.domain.ProgressFixtures.PROGRESSES_TO_CREATE;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)

@@ -9,7 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static com.example.board.domain.BoardFixture.CREATED_BOARD;
+import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
