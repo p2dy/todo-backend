@@ -10,6 +10,7 @@ public class TaskDtoFixtures {
         var result = new TaskDto();
         result.setUniqueId(ADDED_TASK.getTaskId().getValue());
         result.setTitle(ADDED_TASK.getTitle().getValue());
+        result.setProgressReference(ADDED_TASK.getProgressReference().getValue());
         return result;
     }
 
@@ -17,6 +18,7 @@ public class TaskDtoFixtures {
         var result = new TaskDto();
         result.setUniqueId(TASK_TO_ADD.getTaskId().getValue());
         result.setTitle(TASK_TO_ADD.getTitle().getValue());
+        result.setProgressReference(TASK_TO_ADD.getProgressReference().getValue());
         return result;
     }
 }

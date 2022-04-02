@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.example.core.boundary.BoardDtoFixture.createdBoard;
+import static com.example.core.boundary.TaskDtoFixtures.*;
+import static com.example.core.boundary.TaskDtoFixtures.givenTaskToAdd;
 import static com.example.core.domain.TaskFixture.*;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
@@ -26,9 +28,9 @@ class AddTaskBoundaryTest {
     void add() {
         given(service.add(TASK_TO_ADD)).willReturn(ADDED_TASK);
 
-        var task = underTest.addTask(TaskDtoFixtures.givenTaskToAdd(), createdBoard().getUniqueId());
+        var task = underTest.addTask(givenTaskToAdd(), createdBoard().getUniqueId());
 
-        then(task).usingRecursiveComparison().isEqualTo(TaskDtoFixtures.givenAddedTask());
+        then(task).usingRecursiveComparison().isEqualTo(givenAddedTask());
     }
 
 }

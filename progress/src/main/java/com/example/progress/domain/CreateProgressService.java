@@ -17,7 +17,6 @@ class CreateProgressService implements CreateService<Progresses> {
     private final CreateRepository<Progresses> repository;
 
     @Override
-    @BoardAware
     public Progresses create(Progresses columnsToCreate) {
         return repository.create(columnsToCreate);
     }
