@@ -1,5 +1,6 @@
 package com.example.board.boundary;
 
+import com.example.board.domain.BoardExceptions;
 import com.example.board.domain.BoardId;
 import com.example.board.domain.ReadBoardService;
 import lombok.AllArgsConstructor;
@@ -22,8 +23,8 @@ public final class ReadBoardBoundary {
 
     @Query
     public BoardDto readBoardBy(UUID boardId) {
-        return service.readBy(BoardId.of(boardId)).map(BoardDto::from)
-                .orElseThrow(() -> new NotFoundException("can not find board for uniqueId %s".formatted(boardId)));
+        var id = BoardId.of(boardId);
+        return service.readBy(id).map(BoardDto::from).orElseThrow(BoardExceptions.notFoundFor(id));
     }
 
     @Query

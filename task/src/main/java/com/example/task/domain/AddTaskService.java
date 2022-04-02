@@ -1,7 +1,7 @@
 package com.example.task.domain;
 
 import com.example.core.CreateRepository;
-import com.example.core.domain.BoardAware;
+import com.example.core.events.BoardAware;
 import lombok.RequiredArgsConstructor;
 
 import javax.enterprise.context.ApplicationScoped;

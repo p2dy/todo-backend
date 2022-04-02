@@ -15,7 +15,7 @@ import javax.interceptor.InvocationContext;
 @Slf4j
 @Interceptor
 @ObservedCreation
-public class ListenOnCreatedBoardInterceptor {
+class ListenOnCreatedBoardInterceptor {
 
     private final Instance<CreatedListener<Board>> delegates;
 
