@@ -30,7 +30,7 @@ class ReadProgressServiceTest {
 
     @Test
     void read() {
-        given(repository.read(PROGRESSES_TO_CREATE.getId())).willReturn(Optional.of(PROGRESSES_TO_CREATE));
+        given(repository.readBy(PROGRESSES_TO_CREATE.getId())).willReturn(Optional.of(PROGRESSES_TO_CREATE));
 
         then(underTest.readBy(PROGRESSES_TO_CREATE.getId())).contains(PROGRESSES_TO_CREATE);
     }

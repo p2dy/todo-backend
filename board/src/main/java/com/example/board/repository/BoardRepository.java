@@ -25,7 +25,7 @@ class BoardRepository implements CreateRepository<Board>, ReadRepository<BoardId
     }
 
     @Override
-    public Optional<Board> read(BoardId boardId) {
+    public Optional<Board> readBy(BoardId boardId) {
         return Optional.ofNullable(dao.get(boardId.getValue()));
     }
 

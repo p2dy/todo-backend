@@ -16,6 +16,6 @@ class ReadTaskService implements ReadService<TaskId, Task> {
 
     @Override
     public Optional<Task> readBy(TaskId taskId) {
-        return repository.read(taskId);
+        return repository.readBy(taskId);
     }
 }

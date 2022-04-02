@@ -40,13 +40,13 @@ class BoardRepositoryIntegrationTest {
 
     @Test
     void read_IsEmpty() {
-        then(underTest.read(BOARD_TO_CREATE.getId())).isEmpty();
+        then(underTest.readBy(BOARD_TO_CREATE.getId())).isEmpty();
     }
 
     @Test
     void read() {
         var board = underTest.create(BOARD_TO_CREATE);
 
-        then(underTest.read(BOARD_TO_CREATE.getId())).isPresent().contains(board);
+        then(underTest.readBy(BOARD_TO_CREATE.getId())).isPresent().contains(board);
     }
 }

@@ -27,7 +27,7 @@ public class TaskRepository implements CreateRepository<Task>, ReadRepository<Ta
     }
 
     @Override
-    public Optional<Task> read(TaskId taskId) {
+    public Optional<Task> readBy(TaskId taskId) {
         return Optional.ofNullable(dao.get(taskId));
     }
 }

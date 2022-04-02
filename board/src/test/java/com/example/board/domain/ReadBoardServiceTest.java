@@ -23,14 +23,14 @@ class ReadBoardServiceTest {
     private ReadRepository<BoardId, Board> repository;
 
     @Test
-    void read_ReturnsEmpty() {
+    void readBy_ReturnsEmpty() {
         then(underTest.readBy(CREATED_BOARD.getId())).isEmpty();
     }
 
     @Test
-    void read_ReturnsModel() {
+    void readBy_ReturnsModel() {
         var boardId = CREATED_BOARD.getId();
-        given(repository.read(boardId)).willReturn(Optional.of(CREATED_BOARD));
+        given(repository.readBy(boardId)).willReturn(Optional.of(CREATED_BOARD));
 
         then(underTest.readBy(boardId)).contains(CREATED_BOARD);
     }

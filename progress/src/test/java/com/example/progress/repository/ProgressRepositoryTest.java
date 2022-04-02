@@ -40,14 +40,14 @@ class ProgressRepositoryTest {
 
     @Test
     void read_IsEmpty() {
-        then(underTest.read(PROGRESSES_TO_CREATE.getId())).isEmpty();
+        then(underTest.readBy(PROGRESSES_TO_CREATE.getId())).isEmpty();
     }
 
     @Test
     void read() {
         var board = underTest.create(PROGRESSES_TO_CREATE);
 
-        then(underTest.read(PROGRESSES_TO_CREATE.getId())).isPresent().contains(board);
+        then(underTest.readBy(PROGRESSES_TO_CREATE.getId())).isPresent().contains(board);
     }
 
 }

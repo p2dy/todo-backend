@@ -9,6 +9,8 @@ import org.eclipse.microprofile.graphql.Query;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.NotFoundException;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 @GraphQLApi
@@ -24,4 +26,8 @@ public final class ReadBoardBoundary {
                 .orElseThrow(() -> new NotFoundException("can not find board for uniqueId %s".formatted(boardId)));
     }
 
+    @Query
+    public List<BoardDto> readAllBoards() {
+        return service.readAll().stream().map(BoardDto::from).toList();
+    }
 }

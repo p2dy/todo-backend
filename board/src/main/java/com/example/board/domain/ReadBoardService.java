@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -17,7 +18,10 @@ public class ReadBoardService implements ReadService<BoardId, Board> {
     private final ReadRepository<BoardId, Board> repository;
 
     public Optional<Board> readBy(BoardId boardId) {
-        return repository.read(boardId);
+        return repository.readBy(boardId);
     }
 
+    public List<Board> readAll() {
+        return null;
+    }
 }

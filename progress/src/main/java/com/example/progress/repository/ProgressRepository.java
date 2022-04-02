@@ -26,7 +26,7 @@ class ProgressRepository implements CreateRepository<Progresses>, ReadRepository
     }
 
     @Override
-    public Optional<Progresses> read(BoardId boardId) {
+    public Optional<Progresses> readBy(BoardId boardId) {
         return Optional.ofNullable(dao.get(boardId.getValue()));
     }
 
