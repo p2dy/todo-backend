@@ -18,7 +18,7 @@ class ReadProgressService implements ReadService<BoardId, Progresses> {
     private final ReadRepository<BoardId, Progresses> repository;
 
     @Override
-    public Optional<Progresses> read(BoardId boardId) {
+    public Optional<Progresses> readBy(BoardId boardId) {
         return repository.read(boardId);
     }
 }

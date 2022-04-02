@@ -18,5 +18,8 @@ public class Board implements WithId<BoardId> {
         return new Board(boardId, title);
     }
 
+    public Board with(BoardId id) {
+        return create(id, title);
+    }
 }
 

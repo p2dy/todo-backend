@@ -16,7 +16,7 @@ public final class CreateBoardBoundary {
     private final CreateIdempotentBoard service;
 
     @Mutation
-    public BoardDto create(BoardDto board) {
+    public BoardDto createBoard(BoardDto board) {
         return BoardDto.from(service.create(board.toModel()));
     }
 

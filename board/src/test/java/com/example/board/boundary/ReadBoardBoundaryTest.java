@@ -30,15 +30,15 @@ class ReadBoardBoundaryTest {
     void read_ThrowsNotFound() {
         var boardId = CREATED_BOARD.getId().getValue();
         thenExceptionOfType(NotFoundException.class)
-                .isThrownBy(() -> underTest.read(boardId))
+                .isThrownBy(() -> underTest.readBoardBy(boardId))
                 .withMessageContaining("can not find board for uniqueId %s".formatted(boardId));
     }
 
     @Test
     void read_succeeds() {
-        given(service.read(CREATED_BOARD.getId())).willReturn(Optional.of(CREATED_BOARD));
+        given(service.readBy(CREATED_BOARD.getId())).willReturn(Optional.of(CREATED_BOARD));
 
-        var dto = underTest.read(createdBoard().getUniqueId());
+        var dto = underTest.readBoardBy(createdBoard().getUniqueId());
 
         then(dto).usingRecursiveComparison().isEqualTo(createdBoard());
     }

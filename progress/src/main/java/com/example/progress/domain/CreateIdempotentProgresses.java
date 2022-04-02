@@ -17,6 +17,6 @@ public class CreateIdempotentProgresses {
     private final CreateService<Progresses> createService;
 
     public Progresses create(Progresses model) {
-        return readService.read(model.getId()).orElseGet(() -> createService.create(model));
+        return readService.readBy(model.getId()).orElseGet(() -> createService.create(model));
     }
 }

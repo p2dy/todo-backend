@@ -27,7 +27,7 @@ class CreateBoardBoundaryTest {
     void create() {
         given(service.create(BOARD_TO_CREATE)).willReturn(CREATED_BOARD);
 
-        var board = underTest.create(boardToCreate());
+        var board = underTest.createBoard(boardToCreate());
 
         then(board).usingRecursiveComparison().isEqualTo(createdBoard());
     }

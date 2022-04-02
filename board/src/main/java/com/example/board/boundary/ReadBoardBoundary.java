@@ -19,8 +19,8 @@ public final class ReadBoardBoundary {
     private final ReadBoardService service;
 
     @Query
-    public BoardDto read(UUID boardId) {
-        return service.read(BoardId.of(boardId)).map(BoardDto::from)
+    public BoardDto readBoardBy(UUID boardId) {
+        return service.readBy(BoardId.of(boardId)).map(BoardDto::from)
                 .orElseThrow(() -> new NotFoundException("can not find board for uniqueId %s".formatted(boardId)));
     }
 

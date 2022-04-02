@@ -16,6 +16,6 @@ public class CreateIdempotentBoard {
     private final CreateService<Board> createService;
 
     public Board create(Board model) {
-        return readService.read(model.getId()).orElseGet(() -> createService.create(model));
+        return readService.readBy(model.getId()).orElseGet(() -> createService.create(model));
     }
 }

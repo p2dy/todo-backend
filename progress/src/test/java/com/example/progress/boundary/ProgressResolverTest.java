@@ -39,7 +39,7 @@ class ProgressResolverTest {
 
     @Test
     void progresses_succeeds() {
-        given(service.read(CREATED_BOARD.getId())).willReturn(Optional.of(PROGRESSES_TO_CREATE));
+        given(service.readBy(CREATED_BOARD.getId())).willReturn(Optional.of(PROGRESSES_TO_CREATE));
 
         var progresses = underTest.progresses(BoardDto.from(CREATED_BOARD));
 

@@ -14,6 +14,6 @@ public class AddIdempotentTask {
     private final AddTaskService addService;
 
     public Task add(Task task) {
-        return readService.read(task.getTaskId()).orElseGet(() -> addService.add(task));
+        return readService.readBy(task.getTaskId()).orElseGet(() -> addService.add(task));
     }
 }

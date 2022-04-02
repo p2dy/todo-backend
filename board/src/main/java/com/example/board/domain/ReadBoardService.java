@@ -16,7 +16,7 @@ public class ReadBoardService implements ReadService<BoardId, Board> {
 
     private final ReadRepository<BoardId, Board> repository;
 
-    public Optional<Board> read(BoardId boardId) {
+    public Optional<Board> readBy(BoardId boardId) {
         return repository.read(boardId);
     }
 

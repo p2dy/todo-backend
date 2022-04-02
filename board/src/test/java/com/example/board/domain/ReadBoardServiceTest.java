@@ -24,7 +24,7 @@ class ReadBoardServiceTest {
 
     @Test
     void read_ReturnsEmpty() {
-        then(underTest.read(CREATED_BOARD.getId())).isEmpty();
+        then(underTest.readBy(CREATED_BOARD.getId())).isEmpty();
     }
 
     @Test
@@ -32,6 +32,6 @@ class ReadBoardServiceTest {
         var boardId = CREATED_BOARD.getId();
         given(repository.read(boardId)).willReturn(Optional.of(CREATED_BOARD));
 
-        then(underTest.read(boardId)).contains(CREATED_BOARD);
+        then(underTest.readBy(boardId)).contains(CREATED_BOARD);
     }
 }

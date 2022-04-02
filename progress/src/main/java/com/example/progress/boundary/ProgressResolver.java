@@ -21,7 +21,7 @@ public class ProgressResolver {
 
     public List<ProgressDto> progresses(@Source BoardDto boardDto) {
         var uniqueId = boardDto.getUniqueId();
-        var progresses = service.read(BoardId.of(uniqueId))
+        var progresses = service.readBy(BoardId.of(uniqueId))
                 .orElseThrow(() -> new NotFoundException("can not find progresses for boardId %s".formatted(uniqueId)));
         return ProgressDto.from(progresses);
     }

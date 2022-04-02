@@ -29,7 +29,7 @@ class AddIdempotentTaskTest {
 
     @Test
     void add_Idempotent() {
-        given(readService.read(TASK_TO_ADD.getTaskId())).willReturn(Optional.of(CREATED_TASK));
+        given(readService.readBy(TASK_TO_ADD.getTaskId())).willReturn(Optional.of(CREATED_TASK));
 
         var task = underTest.add(TASK_TO_ADD);
 
@@ -39,7 +39,7 @@ class AddIdempotentTaskTest {
 
     @Test
     void add() {
-        given(readService.read(TASK_TO_ADD.getTaskId())).willReturn(Optional.empty());
+        given(readService.readBy(TASK_TO_ADD.getTaskId())).willReturn(Optional.empty());
         given(addService.add(TASK_TO_ADD)).willReturn(CREATED_TASK);
 
         var task = underTest.add(TASK_TO_ADD);

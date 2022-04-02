@@ -41,7 +41,7 @@ class CreateIdempotentBoardTest {
 
     @Test
     void create_Idempotent() {
-        given(readService.read(BOARD_TO_CREATE.getId())).willReturn(Optional.of(CREATED_BOARD));
+        given(readService.readBy(BOARD_TO_CREATE.getId())).willReturn(Optional.of(CREATED_BOARD));
 
         underTest.create(BOARD_TO_CREATE);
 

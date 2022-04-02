@@ -39,7 +39,7 @@ class CreateIdempotentProgressesTest {
 
     @Test
     void create_Idempotent() {
-        given(readService.read(PROGRESSES_TO_CREATE.getId())).willReturn(Optional.of(PROGRESSES_TO_CREATE));
+        given(readService.readBy(PROGRESSES_TO_CREATE.getId())).willReturn(Optional.of(PROGRESSES_TO_CREATE));
 
         then(underTest.create(PROGRESSES_TO_CREATE)).isEqualTo(PROGRESSES_TO_CREATE);
         verify(createService, never()).create(any());
