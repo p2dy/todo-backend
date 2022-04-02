@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
@@ -20,7 +21,7 @@ class ReadBoardServiceTest {
     private ReadBoardService underTest;
 
     @Mock
-    private ReadRepository<BoardId, Board> repository;
+    private ReadAllRepository<BoardId, Board> repository;
 
     @Test
     void readBy_ReturnsEmpty() {
@@ -33,5 +34,12 @@ class ReadBoardServiceTest {
         given(repository.readBy(boardId)).willReturn(Optional.of(CREATED_BOARD));
 
         then(underTest.readBy(boardId)).contains(CREATED_BOARD);
+    }
+
+    @Test
+    void readAll_ReturnsModel() {
+        given(repository.readAll()).willReturn(List.of(CREATED_BOARD));
+
+        then(underTest.readAll()).contains(CREATED_BOARD);
     }
 }

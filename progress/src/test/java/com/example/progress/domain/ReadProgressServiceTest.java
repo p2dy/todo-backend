@@ -24,7 +24,7 @@ class ReadProgressServiceTest {
     private ReadRepository<BoardId, Progresses> repository;
 
     @Test
-    void read_IsEmpty() {
+    void readBy_IsEmpty() {
         then(underTest.readBy(PROGRESSES_TO_CREATE.getId())).isEmpty();
     }
 

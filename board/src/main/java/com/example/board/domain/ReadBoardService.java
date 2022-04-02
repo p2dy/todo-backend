@@ -15,13 +15,13 @@ import java.util.Optional;
 @AllArgsConstructor(onConstructor_ = @Inject)
 public class ReadBoardService implements ReadService<BoardId, Board> {
 
-    private final ReadRepository<BoardId, Board> repository;
+    private final ReadAllRepository<BoardId, Board> repository;
 
     public Optional<Board> readBy(BoardId boardId) {
         return repository.readBy(boardId);
     }
 
     public List<Board> readAll() {
-        return null;
+        return repository.readAll();
     }
 }

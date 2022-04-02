@@ -22,11 +22,11 @@ class BoardRepositoryIntegrationTest {
     }
 
     @Test
-    void create() {
+    void create_ReadAll() {
         underTest.create(BOARD_TO_CREATE);
         var board2 = underTest.create(Board.create(BoardId.of(UUID.randomUUID()), Title.of("AnotherBoard")));
 
-        then(underTest.getValues()).containsExactly(BOARD_TO_CREATE, board2);
+        then(underTest.readAll()).containsExactly(BOARD_TO_CREATE, board2);
     }
 
     @Test
@@ -39,14 +39,19 @@ class BoardRepositoryIntegrationTest {
     }
 
     @Test
-    void read_IsEmpty() {
+    void readBy_IsEmpty() {
         then(underTest.readBy(BOARD_TO_CREATE.getId())).isEmpty();
     }
 
     @Test
-    void read() {
+    void readBy() {
         var board = underTest.create(BOARD_TO_CREATE);
 
         then(underTest.readBy(BOARD_TO_CREATE.getId())).isPresent().contains(board);
+    }
+
+    @Test
+    void readAll_IsEmpty() {
+        then(underTest.readAll()).isEmpty();
     }
 }

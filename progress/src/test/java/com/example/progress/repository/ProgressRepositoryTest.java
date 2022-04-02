@@ -39,7 +39,7 @@ class ProgressRepositoryTest {
     }
 
     @Test
-    void read_IsEmpty() {
+    void readBy_IsEmpty() {
         then(underTest.readBy(PROGRESSES_TO_CREATE.getId())).isEmpty();
     }
 
