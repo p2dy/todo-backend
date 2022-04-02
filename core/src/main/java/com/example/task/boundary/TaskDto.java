@@ -1,5 +1,6 @@
 package com.example.task.boundary;
 
+import com.example.board.domain.BoardId;
 import com.example.core.domain.Title;
 import com.example.task.domain.Task;
 import com.example.task.domain.TaskId;
@@ -20,7 +21,7 @@ public class TaskDto {
         return result;
     }
 
-    public Task model(UUID boardId) {
+    public Task model(BoardId boardId) {
         return Task.create(TaskId.of(uniqueId, boardId), Title.of(title));
     }
 }

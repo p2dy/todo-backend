@@ -22,10 +22,10 @@ class AddTaskServiceTest {
 
     @Test
     void add() {
-        given(repository.create(TASK_TO_ADD)).willReturn(CREATED_TASK);
+        given(repository.create(TASK_TO_ADD)).willReturn(ADDED_TASK);
 
         var task = underTest.add(TASK_TO_ADD);
 
-        then(task).isEqualTo(CREATED_TASK);
+        then(task).isEqualTo(ADDED_TASK);
     }
 }

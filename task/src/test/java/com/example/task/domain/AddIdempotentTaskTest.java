@@ -29,22 +29,22 @@ class AddIdempotentTaskTest {
 
     @Test
     void add_Idempotent() {
-        given(readService.readBy(TASK_TO_ADD.getTaskId())).willReturn(Optional.of(CREATED_TASK));
+        given(readService.readBy(TASK_TO_ADD.getTaskId())).willReturn(Optional.of(ADDED_TASK));
 
         var task = underTest.add(TASK_TO_ADD);
 
-        then(task).isEqualTo(CREATED_TASK);
+        then(task).isEqualTo(ADDED_TASK);
         verify(addService, never()).add(any());
     }
 
     @Test
     void add() {
         given(readService.readBy(TASK_TO_ADD.getTaskId())).willReturn(Optional.empty());
-        given(addService.add(TASK_TO_ADD)).willReturn(CREATED_TASK);
+        given(addService.add(TASK_TO_ADD)).willReturn(ADDED_TASK);
 
         var task = underTest.add(TASK_TO_ADD);
 
-        then(task).isEqualTo(CREATED_TASK);
+        then(task).isEqualTo(ADDED_TASK);
     }
 
 }

@@ -20,7 +20,7 @@ public class TaskRepository implements CreateRepository<Task>, ReadRepository<Ta
     public Task create(Task task) {
         var id = task.getTaskId();
         if (dao.containsKey(id)) {
-            throw new IllegalStateException("task with id %s for boardId %s already exists".formatted(id.getValue(), id.getBoardId()));
+            throw new IllegalStateException("task with id %s for boardId %s already exists".formatted(id.getValue(), id.getBoardIdValue()));
         }
         dao.put(id, task);
         return dao.get(id);

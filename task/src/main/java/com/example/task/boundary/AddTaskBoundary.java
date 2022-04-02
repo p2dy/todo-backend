@@ -1,5 +1,6 @@
 package com.example.task.boundary;
 
+import com.example.board.domain.BoardId;
 import com.example.task.domain.AddIdempotentTask;
 import lombok.AllArgsConstructor;
 import org.eclipse.microprofile.graphql.GraphQLApi;
@@ -17,7 +18,7 @@ public class AddTaskBoundary {
     private final AddIdempotentTask service;
 
     @Mutation
-    public TaskDto add(TaskDto task, UUID boardId) {
-        return TaskDto.from(service.add(task.model(boardId)));
+    public TaskDto addTask(TaskDto task, UUID boardId) {
+        return TaskDto.from(service.add(task.model(BoardId.of(boardId))));
     }
 }

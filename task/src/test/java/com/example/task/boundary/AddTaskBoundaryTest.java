@@ -24,9 +24,9 @@ class AddTaskBoundaryTest {
 
     @Test
     void add() {
-        given(service.add(TASK_TO_ADD)).willReturn(CREATED_TASK);
+        given(service.add(TASK_TO_ADD)).willReturn(ADDED_TASK);
 
-        var task = underTest.add(TaskDtoFixtures.givenTaskToAdd(), createdBoard().getUniqueId());
+        var task = underTest.addTask(TaskDtoFixtures.givenTaskToAdd(), createdBoard().getUniqueId());
 
         then(task).usingRecursiveComparison().isEqualTo(TaskDtoFixtures.givenAddedTask());
     }
