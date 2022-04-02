@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -29,5 +30,9 @@ public class TaskRepository implements CreateRepository<Task>, ReadRepository<Ta
     @Override
     public Optional<Task> readBy(TaskId taskId) {
         return Optional.ofNullable(dao.get(taskId));
+    }
+
+    Collection<Task> values() {
+        return dao.values();
     }
 }
