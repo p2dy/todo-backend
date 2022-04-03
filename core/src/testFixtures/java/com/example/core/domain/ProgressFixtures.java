@@ -1,5 +1,6 @@
 package com.example.core.domain;
 
+import com.example.progress.boundary.ProgressDto;
 import com.example.progress.domain.Progress;
 import com.example.progress.domain.ProgressId;
 import com.example.progress.domain.Progresses;
@@ -23,4 +24,8 @@ public class ProgressFixtures {
     public static final Progress IN_PROGRESS = Progress.create(IN_PROGRESS_ID, IN_PROGRESS_TITLE, 0);
     public static final Progress IN_REVIEW = Progress.create(IN_REVIEW_ID, IN_REVIEW_TITLE, 1);
     public static final Progresses PROGRESSES_TO_CREATE = Progresses.create(CREATED_BOARD.getId(), List.of(IN_PROGRESS, IN_REVIEW));
+
+    public static List<ProgressDto> progressesToCreate() {
+        return ProgressDto.from(PROGRESSES_TO_CREATE);
+    }
 }

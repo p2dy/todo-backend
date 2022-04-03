@@ -2,7 +2,6 @@ package com.example.task.boundary;
 
 import com.example.board.domain.BoardId;
 import com.example.task.domain.AddIdempotentTask;
-import com.example.task.domain.Task;
 import lombok.AllArgsConstructor;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;

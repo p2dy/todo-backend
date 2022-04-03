@@ -1,7 +1,7 @@
 package com.example.progress.boundary;
 
-import com.example.board.boundary.BoardDto;
 import com.example.board.domain.BoardId;
+import com.example.core.domain.ProgressFixtures;
 import com.example.core.domain.ReadService;
 import com.example.progress.domain.Progresses;
 import org.junit.jupiter.api.Test;
@@ -14,6 +14,7 @@ import javax.ws.rs.NotFoundException;
 import java.util.Optional;
 
 import static com.example.core.boundary.BoardDtoFixture.boardToCreate;
+import static com.example.core.boundary.BoardDtoFixture.createdBoard;
 import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
 import static com.example.core.domain.ProgressFixtures.PROGRESSES_TO_CREATE;
 import static org.assertj.core.api.BDDAssertions.then;
@@ -41,9 +42,10 @@ class ProgressResolverTest {
     void progresses_succeeds() {
         given(service.readBy(CREATED_BOARD.getId())).willReturn(Optional.of(PROGRESSES_TO_CREATE));
 
-        var progresses = underTest.progresses(BoardDto.from(CREATED_BOARD));
+        var progresses = underTest.progresses(createdBoard());
 
         then(progresses).usingRecursiveFieldByFieldElementComparator()
-                .isEqualTo(ProgressDto.from(PROGRESSES_TO_CREATE));
+                .isEqualTo(ProgressFixtures.progressesToCreate());
     }
+
 }

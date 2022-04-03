@@ -21,7 +21,7 @@ public class ProgressDto {
         return progressDto;
     }
 
-    static List<ProgressDto> from(Progresses progresses) {
+    public static List<ProgressDto> from(Progresses progresses) {
         return progresses.getValues().stream().map(ProgressDto::from).toList();
     }
 }
