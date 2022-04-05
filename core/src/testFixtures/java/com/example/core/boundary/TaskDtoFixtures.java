@@ -8,17 +8,15 @@ import static com.example.core.domain.TaskFixture.TASK_TO_ADD;
 public class TaskDtoFixtures {
     public static TaskDto givenAddedTask() {
         var result = new TaskDto();
-        result.setUniqueId(ADDED_TASK.getTaskId().getValue());
+        result.setUniqueId(ADDED_TASK.getId().getValue());
         result.setTitle(ADDED_TASK.getTitle().getValue());
-        result.setProgressReference(ADDED_TASK.getProgressReference().getValue());
         return result;
     }
 
     public static TaskDto givenTaskToAdd() {
         var result = new TaskDto();
-        result.setUniqueId(TASK_TO_ADD.getTaskId().getValue());
+        result.setUniqueId(TASK_TO_ADD.getId().getValue());
         result.setTitle(TASK_TO_ADD.getTitle().getValue());
-        result.setProgressReference(TASK_TO_ADD.getProgressReference().getValue());
         return result;
     }
 }

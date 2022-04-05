@@ -28,4 +28,12 @@ public class ProgressFixtures {
     public static List<ProgressDto> progressesToCreate() {
         return ProgressDto.from(PROGRESSES_TO_CREATE);
     }
+
+    public static ProgressDto givenTodoProgress() {
+        var dto = new ProgressDto();
+        dto.setUniqueId(TODO.getId().getValue());
+        dto.setTitle(TODO.getTitle().getValue());
+        dto.setPosition(TODO.getPosition());
+        return dto;
+    }
 }

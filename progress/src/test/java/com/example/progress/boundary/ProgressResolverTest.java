@@ -17,6 +17,7 @@ import static com.example.core.boundary.BoardDtoFixture.boardToCreate;
 import static com.example.core.boundary.BoardDtoFixture.createdBoard;
 import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
 import static com.example.core.domain.ProgressFixtures.PROGRESSES_TO_CREATE;
+import static com.example.core.domain.ProgressFixtures.progressesToCreate;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenExceptionOfType;
 import static org.mockito.BDDMockito.given;
@@ -45,7 +46,7 @@ class ProgressResolverTest {
         var progresses = underTest.progresses(createdBoard());
 
         then(progresses).usingRecursiveFieldByFieldElementComparator()
-                .isEqualTo(ProgressFixtures.progressesToCreate());
+                .isEqualTo(progressesToCreate());
     }
 
 }

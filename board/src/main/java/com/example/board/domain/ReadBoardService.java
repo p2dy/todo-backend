@@ -1,6 +1,6 @@
 package com.example.board.domain;
 
-import com.example.core.ReadRepository;
+import com.example.board.ReadBoardRepository;
 import com.example.core.domain.ReadService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor(onConstructor_ = @Inject)
 public class ReadBoardService implements ReadService<BoardId, Board> {
 
-    private final ReadAllRepository<BoardId, Board> repository;
+    private final ReadBoardRepository<BoardId, Board> repository;
 
     public Optional<Board> readBy(BoardId boardId) {
         return repository.readBy(boardId);

@@ -8,10 +8,10 @@ import javax.inject.Inject;
 
 @ApplicationScoped
 @RequiredArgsConstructor(onConstructor_ = @Inject)
-class AddTaskService {
-    private final CreateRepository<Task> repository;
+class AddBacklogTaskService {
+    private final CreateRepository<BacklogTask> repository;
 
-    public Task add(Task task) {
-        return repository.create(task);
+    public BacklogTask add(BacklogTask backlogTask) {
+        return repository.create(backlogTask);
     }
 }

@@ -2,15 +2,14 @@ package com.example.board.repository;
 
 import com.example.board.domain.Board;
 import com.example.board.domain.BoardId;
-import com.example.board.domain.ReadAllRepository;
+import com.example.board.ReadBoardRepository;
 import com.example.core.CreateRepository;
-import com.example.core.ReadRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.*;
 
 @ApplicationScoped
-class BoardRepository implements CreateRepository<Board>, ReadAllRepository<BoardId, Board> {
+class BoardRepository implements CreateRepository<Board>, ReadBoardRepository<BoardId, Board> {
     private final HashMap<UUID, Board> dao = new HashMap<>();
 
     public Board create(Board board) {

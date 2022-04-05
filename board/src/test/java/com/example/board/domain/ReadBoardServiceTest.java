@@ -1,6 +1,6 @@
 package com.example.board.domain;
 
-import com.example.core.ReadRepository;
+import com.example.board.ReadBoardRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +21,7 @@ class ReadBoardServiceTest {
     private ReadBoardService underTest;
 
     @Mock
-    private ReadAllRepository<BoardId, Board> repository;
+    private ReadBoardRepository<BoardId, Board> repository;
 
     @Test
     void readBy_ReturnsEmpty() {

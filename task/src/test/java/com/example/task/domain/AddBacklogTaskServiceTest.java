@@ -12,20 +12,20 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class AddTaskServiceTest {
+class AddBacklogTaskServiceTest {
 
     @InjectMocks
-    private AddTaskService underTest;
+    private AddBacklogTaskService underTest;
 
     @Mock
-    private CreateRepository<Task> repository;
+    private CreateRepository<BacklogTask> repository;
 
     @Test
     void add() {
-        given(repository.create(TASK_TO_ADD)).willReturn(ADDED_TASK);
+        given(repository.create(BACKLOG_TASK_TO_ADD)).willReturn(ADDED_BACKLOG_TASK);
 
-        var task = underTest.add(TASK_TO_ADD);
+        var task = underTest.add(BACKLOG_TASK_TO_ADD);
 
-        then(task).isEqualTo(ADDED_TASK);
+        then(task).isEqualTo(ADDED_BACKLOG_TASK);
     }
 }

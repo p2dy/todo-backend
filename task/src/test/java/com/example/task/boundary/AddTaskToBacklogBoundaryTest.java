@@ -1,6 +1,5 @@
 package com.example.task.boundary;
 
-import com.example.core.boundary.TaskDtoFixtures;
 import com.example.task.domain.AddIdempotentTask;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,17 +15,17 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class AddTaskBoundaryTest {
+class AddTaskToBacklogBoundaryTest {
 
     @InjectMocks
-    private AddTaskBoundary underTest;
+    private AddTaskToBacklogBoundary underTest;
 
     @Mock
     private AddIdempotentTask service;
 
     @Test
     void add() {
-        given(service.add(TASK_TO_ADD)).willReturn(ADDED_TASK);
+        given(service.add(BACKLOG_TASK_TO_ADD)).willReturn(ADDED_BACKLOG_TASK);
 
         var task = underTest.addTask(givenTaskToAdd(), createdBoard().getUniqueId());
 
