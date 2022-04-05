@@ -1,7 +1,6 @@
 package com.example.core;
 
 import com.example.board.domain.BoardId;
-import com.example.task.domain.BacklogTaskId;
 
 import java.util.List;
 

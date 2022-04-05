@@ -1,6 +1,6 @@
 package com.example.task.boundary;
 
-import com.example.task.domain.ReadBacklogTaskService;
+import com.example.task.domain.ReadTaskService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,25 +12,25 @@ import java.util.List;
 import static com.example.core.boundary.BoardDtoFixture.createdBoard;
 import static com.example.core.boundary.TaskDtoFixtures.givenAddedTask;
 import static com.example.core.domain.BoardFixtures.CREATED_BOARD;
-import static com.example.core.domain.TaskFixture.ADDED_BACKLOG_TASK;
+import static com.example.core.domain.TaskFixture.ADDED_TASK;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class BacklogTaskResolverTest {
+class TaskResolverTest {
 
     @InjectMocks
-    private BacklogTaskResolver underTest;
+    private TaskResolver underTest;
 
     @Mock
-    private ReadBacklogTaskService service;
+    private ReadTaskService service;
 
     @Test
     void tasks_DelegatesToService() {
-        given(service.readAllBy(CREATED_BOARD.getId())).willReturn(List.of(ADDED_BACKLOG_TASK));
+        given(service.readAllBy(CREATED_BOARD.getId())).willReturn(List.of(ADDED_TASK));
 
-        var tasks = underTest.backlogTasks(createdBoard());
+        var tasks = underTest.tasks(createdBoard());
 
-        then(tasks).containsExactly(givenAddedTask());
+        then(tasks).containsExactlyInAnyOrder(givenAddedTask());
     }
 }

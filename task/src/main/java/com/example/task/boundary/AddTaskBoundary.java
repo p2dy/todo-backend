@@ -1,26 +1,23 @@
 package com.example.task.boundary;
 
-import com.example.board.domain.BoardId;
 import com.example.task.domain.AddIdempotentTask;
-import com.example.task.domain.BacklogTask;
 import lombok.AllArgsConstructor;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import java.util.UUID;
 
 @GraphQLApi
 @ApplicationScoped
 @AllArgsConstructor(onConstructor_ = @Inject)
-public class AddTaskToBacklogBoundary {
+public class AddTaskBoundary {
 
     private final AddIdempotentTask service;
 
     @Mutation
-    public TaskDto addTask(TaskDto task, UUID boardId) {
-        var addedTask = service.add(BacklogTask.create(BoardId.of(boardId), task.model()));
+    public TaskDto addTask(TaskDto taskToAdd) {
+        var addedTask = service.add(taskToAdd.model());
         return TaskDto.from(addedTask);
     }
 }

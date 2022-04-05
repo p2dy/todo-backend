@@ -7,27 +7,27 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.example.core.boundary.BoardDtoFixture.createdBoard;
-import static com.example.core.boundary.TaskDtoFixtures.*;
+import static com.example.core.boundary.TaskDtoFixtures.givenAddedTask;
 import static com.example.core.boundary.TaskDtoFixtures.givenTaskToAdd;
-import static com.example.core.domain.TaskFixture.*;
+import static com.example.core.domain.TaskFixture.ADDED_TASK;
+import static com.example.core.domain.TaskFixture.TASK_TO_ADD;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class AddTaskToBacklogBoundaryTest {
+class AddTaskBoundaryTest {
 
     @InjectMocks
-    private AddTaskToBacklogBoundary underTest;
+    private AddTaskBoundary underTest;
 
     @Mock
     private AddIdempotentTask service;
 
     @Test
     void add() {
-        given(service.add(BACKLOG_TASK_TO_ADD)).willReturn(ADDED_BACKLOG_TASK);
+        given(service.add(TASK_TO_ADD)).willReturn(ADDED_TASK);
 
-        var task = underTest.addTask(givenTaskToAdd(), createdBoard().getUniqueId());
+        var task = underTest.addTask(givenTaskToAdd());
 
         then(task).usingRecursiveComparison().isEqualTo(givenAddedTask());
     }

@@ -51,6 +51,6 @@ class ReadBoardBoundaryTest {
 
         var dtos = underTest.readAllBoards();
 
-        then(dtos).containsExactly(createdBoard());
+        then(dtos).containsExactlyInAnyOrder(createdBoard());
     }
 }

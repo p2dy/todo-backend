@@ -10,7 +10,7 @@ pluginManagement {
 }
 rootProject.name = 'todo-backend'
 include 'application'
+include 'core'
 include 'board'
 include 'progress'
 include 'task'
-include 'core'

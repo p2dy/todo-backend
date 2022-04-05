@@ -1,15 +1,12 @@
 package com.example.board.events;
 
-import com.example.board.domain.Board;
 import com.example.board.domain.BoardExceptions;
 import com.example.board.domain.BoardId;
-import com.example.core.domain.ReadService;
+import com.example.board.domain.ReadBoardService;
 import com.example.core.domain.WithBoardId;
 import com.example.core.events.BoardAware;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.enterprise.inject.Any;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
@@ -21,11 +18,11 @@ import java.util.Arrays;
 @BoardAware
 class ListenOnBoardAwareInterceptor {
 
-    private final Instance<ReadService<BoardId, Board>> delegates;
+    private final ReadBoardService service;
 
     @Inject
-    public ListenOnBoardAwareInterceptor(@Any Instance<ReadService<BoardId, Board>> delegates) {
-        this.delegates = delegates;
+    public ListenOnBoardAwareInterceptor(ReadBoardService service) {
+        this.service = service;
     }
 
     @AroundInvoke
@@ -40,8 +37,7 @@ class ListenOnBoardAwareInterceptor {
     }
 
     private void validateExists(BoardId boardId) {
-        delegates.forEach(listener ->
-                listener.readBy(boardId).orElseThrow(BoardExceptions.notFoundFor(boardId)));
+        service.readBy(boardId).orElseThrow(BoardExceptions.notFoundFor(boardId));
     }
 
 }

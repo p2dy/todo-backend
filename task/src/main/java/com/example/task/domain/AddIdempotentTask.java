@@ -11,12 +11,11 @@ import javax.inject.Inject;
 @ApplicationScoped
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class AddIdempotentTask {
-    private final ReadBacklogTaskService readService;
-    private final AddBacklogTaskService addService;
+    private final ReadTaskService readService;
+    private final AddTaskService addService;
 
     @BoardAware
-    public BacklogTask add(BacklogTask backlogTask) {
-        return readService.readBy(backlogTask.getId()).orElseGet(() -> addService.add(backlogTask));
+    public Task add(Task taskToAdd) {
+        return readService.readBy(taskToAdd.getId()).orElseGet(() -> addService.add(taskToAdd));
     }
-
 }

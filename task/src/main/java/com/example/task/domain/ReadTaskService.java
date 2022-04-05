@@ -8,23 +8,22 @@ import lombok.RequiredArgsConstructor;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
 @RequiredArgsConstructor(onConstructor_ = @Inject)
-public class ReadBacklogTaskService implements ReadService<BacklogTaskId, BacklogTask> {
+public class ReadTaskService implements ReadService<TaskId, Task> {
 
-    private final ReadRepository<BacklogTaskId, BacklogTask> repository;
-    private final ReadByBoardIdRepository<BacklogTask> byBoardIdRepository;
+    private final ReadRepository<TaskId, Task> repository;
+    private final ReadByBoardIdRepository<Task> byBoardIdRepository;
 
-    @Override
-    public Optional<BacklogTask> readBy(BacklogTaskId backlogTaskId) {
-        return repository.readBy(backlogTaskId);
+
+    public Optional<Task> readBy(TaskId taskId) {
+        return repository.readBy(taskId);
     }
 
-    public List<BacklogTask> readAllBy(BoardId boardId) {
+    public List<Task> readAllBy(BoardId boardId) {
         return byBoardIdRepository.readAllBy(boardId);
     }
 }

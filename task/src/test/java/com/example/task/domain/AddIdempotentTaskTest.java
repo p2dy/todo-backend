@@ -16,35 +16,35 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class AddIdempotentBacklogTaskTest {
+class AddIdempotentTaskTest {
 
     @InjectMocks
     private AddIdempotentTask underTest;
 
     @Mock
-    private ReadBacklogTaskService readService;
+    private ReadTaskService readService;
 
     @Mock
-    private AddBacklogTaskService addService;
+    private AddTaskService addService;
 
     @Test
     void add_Idempotent() {
-        given(readService.readBy(BACKLOG_TASK_TO_ADD.getId())).willReturn(Optional.of(ADDED_BACKLOG_TASK));
+        given(readService.readBy(TASK_TO_ADD.getId())).willReturn(Optional.of(ADDED_TASK));
 
-        var task = underTest.add(BACKLOG_TASK_TO_ADD);
+        var task = underTest.add(TASK_TO_ADD);
 
-        then(task).isEqualTo(ADDED_BACKLOG_TASK);
-        verify(addService, never()).add(any());
+        then(task).isEqualTo(ADDED_TASK);
+        verify(addService, never()).add(any(Task.class));
     }
 
     @Test
     void add() {
-        given(readService.readBy(BACKLOG_TASK_TO_ADD.getId())).willReturn(Optional.empty());
-        given(addService.add(BACKLOG_TASK_TO_ADD)).willReturn(ADDED_BACKLOG_TASK);
+        given(readService.readBy(TASK_TO_ADD.getId())).willReturn(Optional.empty());
+        given(addService.add(TASK_TO_ADD)).willReturn(ADDED_TASK);
 
-        var task = underTest.add(BACKLOG_TASK_TO_ADD);
+        var task = underTest.add(TASK_TO_ADD);
 
-        then(task).isEqualTo(ADDED_BACKLOG_TASK);
+        then(task).isEqualTo(ADDED_TASK);
     }
 
 }

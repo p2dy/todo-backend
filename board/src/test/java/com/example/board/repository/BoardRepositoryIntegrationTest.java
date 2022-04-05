@@ -26,7 +26,7 @@ class BoardRepositoryIntegrationTest {
         underTest.create(BOARD_TO_CREATE);
         var board2 = underTest.create(Board.create(BoardId.of(UUID.randomUUID()), Title.of("AnotherBoard")));
 
-        then(underTest.readAll()).containsExactly(BOARD_TO_CREATE, board2);
+        then(underTest.readAll()).containsExactlyInAnyOrder(BOARD_TO_CREATE, board2);
     }
 
     @Test

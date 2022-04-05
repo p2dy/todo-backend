@@ -1,17 +1,17 @@
 package com.example.task.boundary;
 
+import com.example.board.domain.BoardId;
 import com.example.core.domain.Title;
-import com.example.task.domain.BacklogTask;
 import com.example.task.domain.Task;
 import com.example.task.domain.TaskId;
 import lombok.Data;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
 public class TaskDto {
     UUID uniqueId;
+    UUID boardReference;
     String title;
 
     public static TaskDto from(Task task) {
@@ -21,11 +21,7 @@ public class TaskDto {
         return result;
     }
 
-    public static TaskDto from(BacklogTask backlogTask) {
-        return from(backlogTask.getTask());
-    }
-
     public Task model() {
-        return Task.create(TaskId.of(uniqueId), Title.of(title));
+        return Task.create(TaskId.of(uniqueId), BoardId.of(boardReference), Title.of(title));
     }
 }
