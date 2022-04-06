@@ -18,6 +18,7 @@ public class TaskDto {
         var result = new TaskDto();
         result.setUniqueId(task.getId().getValue());
         result.setTitle(task.getTitle().getValue());
+        result.setBoardReference(task.getBoardReference().getValue());
         return result;
     }
 

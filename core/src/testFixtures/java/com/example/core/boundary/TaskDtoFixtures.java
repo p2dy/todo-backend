@@ -9,6 +9,7 @@ import static com.example.core.domain.TaskFixture.TASK_TO_ADD;
 public class TaskDtoFixtures {
     public static TaskDto givenAddedTask() {
         var result = new TaskDto();
+        result.setBoardReference(ADDED_TASK.getBoardReference().getValue());
         result.setUniqueId(ADDED_TASK.getId().getValue());
         result.setTitle(ADDED_TASK.getTitle().getValue());
         return result;
@@ -16,8 +17,8 @@ public class TaskDtoFixtures {
 
     public static TaskDto givenTaskToAdd() {
         var result = new TaskDto();
-        result.setUniqueId(TASK_TO_ADD.getId().getValue());
         result.setBoardReference(TASK_TO_ADD.getBoardReference().getValue());
+        result.setUniqueId(TASK_TO_ADD.getId().getValue());
         result.setTitle(TASK_TO_ADD.getTitle().getValue());
         return result;
     }
