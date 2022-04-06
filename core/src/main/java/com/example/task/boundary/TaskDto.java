@@ -10,8 +10,8 @@ import java.util.UUID;
 
 @Data
 public class TaskDto {
-    UUID uniqueId;
     UUID boardReference;
+    UUID uniqueId;
     String title;
 
     public static TaskDto from(Task task) {
@@ -23,6 +23,6 @@ public class TaskDto {
     }
 
     public Task model() {
-        return Task.create(TaskId.of(uniqueId), BoardId.of(boardReference), Title.of(title));
+        return Task.create(BoardId.of(boardReference), TaskId.of(uniqueId), Title.of(title));
     }
 }

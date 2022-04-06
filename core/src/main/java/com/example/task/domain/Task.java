@@ -7,8 +7,8 @@ import lombok.Value;
 
 @Value(staticConstructor = "create")
 public class Task implements WithBoardReference {
-    TaskId id;
     BoardId boardReference;
+    TaskId id;
 //    ProgressId progressReference;
     Title title;
 
