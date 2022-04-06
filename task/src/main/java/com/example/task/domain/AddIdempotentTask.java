@@ -1,6 +1,6 @@
 package com.example.task.domain;
 
-import com.example.core.events.BoardAware;
+import com.example.core.events.ReferencesBoard;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,7 +14,7 @@ public class AddIdempotentTask {
     private final ReadTaskService readService;
     private final AddTaskService addService;
 
-    @BoardAware
+    @ReferencesBoard
     public Task add(Task taskToAdd) {
         return readService.readBy(taskToAdd.getId()).orElseGet(() -> addService.add(taskToAdd));
     }

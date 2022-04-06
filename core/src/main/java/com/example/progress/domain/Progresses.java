@@ -1,14 +1,13 @@
 package com.example.progress.domain;
 
 import com.example.board.domain.BoardId;
-import com.example.core.domain.WithBoardId;
-import com.example.core.domain.WithId;
+import com.example.core.domain.WithBoardReference;
 import lombok.Value;
 
 import java.util.List;
 
 @Value
-public class Progresses implements WithBoardId {
+public class Progresses implements WithBoardReference {
 
     BoardId id;
     List<Progress> values;
@@ -18,7 +17,7 @@ public class Progresses implements WithBoardId {
     }
 
     @Override
-    public BoardId getBoardId() {
+    public BoardId getBoardReference() {
         return id;
     }
 }

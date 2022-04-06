@@ -2,7 +2,7 @@ package com.example.board.domain;
 
 import com.example.core.domain.CreateService;
 import com.example.core.domain.ReadService;
-import com.example.core.events.BoardAware;
+import com.example.core.events.ReferencesBoard;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,7 +16,7 @@ public class CreateIdempotentBoard {
     private final ReadService<BoardId, Board> readService;
     private final CreateService<Board> createService;
 
-    @BoardAware
+    @ReferencesBoard
     public Board create(Board model) {
         return readService.readBy(model.getId()).orElseGet(() -> createService.create(model));
     }

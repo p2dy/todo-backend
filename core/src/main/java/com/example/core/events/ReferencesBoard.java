@@ -7,5 +7,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 @InterceptorBinding
-public @interface BoardAware {
+public @interface ReferencesBoard {
 }

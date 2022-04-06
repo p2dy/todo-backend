@@ -3,8 +3,8 @@ package com.example.board.events;
 import com.example.board.domain.BoardExceptions;
 import com.example.board.domain.BoardId;
 import com.example.board.domain.ReadBoardService;
-import com.example.core.domain.WithBoardId;
-import com.example.core.events.BoardAware;
+import com.example.core.domain.WithBoardReference;
+import com.example.core.events.ReferencesBoard;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 @Slf4j
 @Interceptor
-@BoardAware
+@ReferencesBoard
 class ListenOnBoardAwareInterceptor {
 
     private final ReadBoardService service;
@@ -29,9 +29,9 @@ class ListenOnBoardAwareInterceptor {
     Object delegateEvent(InvocationContext invocationContext) throws Exception {
         var parameters = invocationContext.getParameters();
         Arrays.stream(parameters)
-                .filter(WithBoardId.class::isInstance)
-                .map(WithBoardId.class::cast)
-                .map(WithBoardId::getBoardId)
+                .filter(WithBoardReference.class::isInstance)
+                .map(WithBoardReference.class::cast)
+                .map(WithBoardReference::getBoardReference)
                 .forEach(this::validateExists);
         return invocationContext.proceed();
     }
