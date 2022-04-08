@@ -4,6 +4,7 @@ import com.example.board.domain.BoardId;
 import com.example.core.domain.WithBoardReference;
 import lombok.Value;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Value
@@ -19,5 +20,9 @@ public class Progresses implements WithBoardReference {
     @Override
     public BoardId getBoardReference() {
         return id;
+    }
+
+    public ProgressId firstProgressReference() {
+        return values.get(0).getId();
     }
 }

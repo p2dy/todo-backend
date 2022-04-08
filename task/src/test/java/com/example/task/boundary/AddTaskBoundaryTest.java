@@ -1,5 +1,6 @@
 package com.example.task.boundary;
 
+import com.example.core.domain.TaskFixture;
 import com.example.task.domain.AddIdempotentTask;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,10 +27,24 @@ class AddTaskBoundaryTest {
     @Test
     void add() {
         given(service.add(TASK_TO_ADD)).willReturn(ADDED_TASK);
-
         var task = underTest.addTask(givenTaskToAdd());
 
         then(task).usingRecursiveComparison().isEqualTo(givenAddedTask());
+    }
+
+    @Test
+    void add_DelegatesWithEmptyProgressReference() {
+        given(service.add(TaskFixture.TASK_WITH_EMPTY_PROGRESS_REFERENCE)).willReturn(ADDED_TASK);
+
+        var task = underTest.addTask(taskWithoutProgressReference());
+
+        then(task).usingRecursiveComparison().isEqualTo(givenAddedTask());
+    }
+
+    private TaskDto taskWithoutProgressReference() {
+        var taskDto = givenTaskToAdd();
+        taskDto.setProgressReference(null);
+        return taskDto;
     }
 
 }

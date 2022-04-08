@@ -10,6 +10,7 @@ public class TaskDtoFixtures {
     public static TaskDto givenAddedTask() {
         var result = new TaskDto();
         result.setBoardReference(ADDED_TASK.getBoardReference().getValue());
+        result.setProgressReference(ADDED_TASK.getProgressReference().getValue());
         result.setUniqueId(ADDED_TASK.getId().getValue());
         result.setTitle(ADDED_TASK.getTitle().getValue());
         return result;
@@ -18,6 +19,7 @@ public class TaskDtoFixtures {
     public static TaskDto givenTaskToAdd() {
         var result = new TaskDto();
         result.setBoardReference(TASK_TO_ADD.getBoardReference().getValue());
+        result.setProgressReference(TASK_TO_ADD.getProgressReference().getValue());
         result.setUniqueId(TASK_TO_ADD.getId().getValue());
         result.setTitle(TASK_TO_ADD.getTitle().getValue());
         return result;
